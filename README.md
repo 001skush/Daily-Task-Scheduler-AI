@@ -81,7 +81,7 @@ This allows developers to focus on **problem-solving and product design**, not i
 
 ## ⚠️ Challenges & Limitations
 
-- No persistent user data storage  
+- No persistent user data storage (intentional for v1 to keep the system fully serverless and free-tier friendly)
 - Output quality depends on user-provided task estimates  
 - Scheduling logic is prompt-based, not rule-based  
 
@@ -96,7 +96,13 @@ This allows developers to focus on **problem-solving and product design**, not i
 
 - **AWS PartyRock** – No-code AI application builder  
 - **Amazon Bedrock** – Foundation model inference  
-- **AWS Managed Infrastructure** – Serverless, scalable backend  
+- **AWS Managed Infrastructure** – Serverless, scalable backend
+
+---
+
+## Production Considerations
+
+In a production environment, this application would include persistent storage, authentication, rule-based scheduling guards, and calendar integrations while retaining Amazon Bedrock for reasoning and recommendations.
 
 ---
 

@@ -1,174 +1,149 @@
-📘 PROJECT_NOTES.md
-Daily Task Scheduler (AI-Powered)
+# 📘 PROJECT_NOTES.md
+## Daily Task Scheduler (AI-Powered)
 
-This document captures the design decisions, trade-offs, limitations, and reasoning behind the Daily Task Scheduler (AI-Powered) application.
-It is intended to explain why the system was built this way, not just what it does.
+This document captures the **design decisions, trade-offs, and reasoning** behind the *Daily Task Scheduler (AI-Powered)* application.  
+It explains *why* the system was designed this way, rather than only describing *what* it does.
 
-🎯 Project Intent
+---
 
-The primary goal of this project was to demonstrate AI-driven workflow design on AWS, not traditional full-stack development.
+## 🎯 Project Intent
 
-Specifically, the project focuses on:
+The goal of this project was to demonstrate **AI-driven workflow design using AWS managed services**, rather than traditional full-stack development.
 
-Embedding AI into a real productivity use case
+Key objectives:
+- Embed AI into a real productivity use case
+- Structure unstructured user input for reliable AI output
+- Leverage fully managed AWS services to minimize operational overhead
+- Design an application that can evolve into an enterprise-ready system
 
-Structuring unstructured user input for reliable AI output
+---
 
-Leveraging fully managed AWS services to minimize operational overhead
+## 🧠 Key Design Decisions
 
-Designing a system that can evolve into an enterprise-grade solution
+### 1️⃣ No-Code Architecture (AWS PartyRock + Amazon Bedrock)
 
-🧠 Key Design Decisions
-1️⃣ No-Code Architecture (PartyRock + Bedrock)
+**Decision**  
+The application uses AWS PartyRock for the UI and prompt orchestration, with Amazon Bedrock providing foundation model inference.
 
-Decision:
-Use AWS PartyRock with Amazon Bedrock instead of building a custom frontend and backend.
+**Reasoning**
+- Focuses effort on AI behavior and system design
+- Removes the need for custom infrastructure and boilerplate code
+- Enables rapid development and iteration
+- Ensures scalability, availability, and security are handled by AWS
 
-Reasoning:
+**Trade-offs**
+- Limited control over backend logic
+- Constrained customization compared to custom-built applications
 
-Keeps the focus on AI logic and system behavior
+This was an intentional decision to prioritize **AI reasoning and workflow design**.
 
-Eliminates boilerplate infrastructure work
+---
 
-Demonstrates modern rapid AI application development patterns
+### 2️⃣ Accepting Unstructured User Input
 
-Ensures scalability, availability, and security are AWS-managed
+**Decision**  
+Users are allowed to enter tasks as free-form text instead of a rigid schema.
 
-Trade-off:
+**Reasoning**
+- Reflects how users naturally maintain task lists
+- Forces the AI to interpret intent, priority, and effort
+- Demonstrates real-world AI usage scenarios
 
-Limited control over low-level application behavior
+**Mitigation**
+- Prompt structure enforces task clarity
+- UI guidance encourages well-defined inputs
 
-No custom backend logic in v1
+---
 
-This was an intentional trade-off to prioritize AI workflow design.
+### 3️⃣ Prompt-Based Scheduling Logic
 
-2️⃣ Accepting Unstructured User Input
+**Decision**  
+Scheduling logic is implemented using prompt engineering rather than rule-based algorithms.
 
-Decision:
-Allow users to enter tasks as free-form text instead of a strict schema.
+**Reasoning**
+- Supports flexible reasoning over priorities, constraints, and time estimates
+- Enables generation of productivity insights alongside schedules
+- Avoids rigid logic that may not generalize across users
 
-Reasoning:
+**Trade-off**
+- Output quality depends on input accuracy and prompt design
+- Less deterministic than traditional scheduling engines
 
-Mirrors how people actually write task lists
+---
 
-Forces the AI to perform reasoning and interpretation
+### 4️⃣ Overload Detection via AI Reasoning
 
-Demonstrates real-world AI usage rather than ideal inputs
+**Decision**  
+Schedule overload is identified through AI analysis instead of fixed thresholds.
 
-Mitigation:
+**Reasoning**
+- Provides contextual explanations instead of binary errors
+- Aligns more closely with human productivity judgment
+- Allows suggestions and prioritization guidance
 
-Prompt structure enforces clear task interpretation
+**Constraint**
+- Overload detection is dependent on user-provided time estimates
 
-Examples and UI guidance improve input quality
+---
 
-3️⃣ Prompt-Based Scheduling Logic
+## ⚠️ Known Limitations (Version 1)
 
-Decision:
-Use prompt engineering instead of rule-based scheduling algorithms.
+- No persistent data storage
+- No user authentication
+- Single-day scheduling only
+- No calendar integrations
 
-Reasoning:
+These limitations were **intentional** to keep the application:
+- Free-tier friendly
+- Fully serverless
+- Focused on AI-driven decision-making
 
-Allows flexible reasoning across priorities, effort, and constraints
+---
 
-Enables productivity insights beyond simple scheduling
+## 🛠️ Production Considerations
 
-Keeps the system adaptable without hardcoding business rules
+In a production environment, this application would include:
+- Persistent storage using Amazon DynamoDB
+- User authentication via Amazon Cognito
+- Hybrid scheduling logic (rules + AI reasoning)
+- External calendar integrations (Google / Outlook)
+- Observability and usage analytics
 
-Trade-off:
+The AI reasoning layer powered by Amazon Bedrock would remain central to the system.
 
-Output quality depends on prompt clarity
+---
 
-Less deterministic than traditional scheduling algorithms
+## 📈 Evolution Path (Version 2)
 
-This approach reflects how AI is often used in modern decision-support systems.
+Planned improvements:
+- Save daily and weekly schedules
+- Track productivity trends
+- Support multiple users and teams
+- Introduce access control and auditability
 
-4️⃣ Overload Detection via AI Reasoning
+The architecture is designed to support these additions without rewriting the core logic.
 
-Decision:
-Detect overloaded schedules through AI analysis rather than strict calculations.
+---
 
-Reasoning:
+## 🎓 Key Learnings
 
-Allows nuanced warnings and recommendations
+- Effective AI systems require disciplined input structure
+- Prompt design directly impacts output reliability
+- Managed services significantly reduce operational complexity
+- Designing for future scalability is critical even at MVP stage
 
-Enables explanations instead of binary errors
+---
 
-Aligns with human-like productivity judgment
-
-Constraint:
-
-Overload detection depends on accurate time estimates from users
-
-⚠️ Known Limitations (V1)
-
-No persistent storage (data resets on refresh)
-
-Single-day scheduling only
-
-No user authentication
-
-No external calendar integrations
-
-These limitations were accepted by design to keep the project:
-
-Free-tier friendly
-
-Fully serverless
-
-Focused on AI reasoning rather than infrastructure complexity
-
-🛠️ What I Would Change in Production
-
-In a production-grade version, I would introduce:
-
-Persistent storage using Amazon DynamoDB
-
-User authentication via Amazon Cognito
-
-Hybrid scheduling logic (rules + AI)
-
-Calendar integrations (Google / Outlook)
-
-Usage analytics and feedback loops to improve AI output quality
-
-The core AI reasoning layer (Bedrock) would remain unchanged.
-
-📈 Evolution Path (V2 Vision)
-
-This project is designed to evolve naturally into an enterprise-ready system:
-
-Save historical schedules and productivity metrics
-
-Provide weekly and monthly insights
-
-Support multiple users and teams
-
-Introduce access controls and auditability
-
-This evolution would demonstrate scalability without rewriting the core logic.
-
-🎓 Key Learnings
-
-AI systems require input discipline, not just model access
-
-Prompt structure directly affects output reliability
-
-Managed services accelerate innovation when used intentionally
-
-Designing for evolution is as important as building v1
-
-✅ Summary
+## ✅ Summary
 
 This project demonstrates:
+- Practical AI integration using AWS managed services
+- Conscious design trade-offs suitable for an MVP
+- System-level thinking beyond simple AI chat interfaces
+- A clear, realistic path toward enterprise readiness
 
-Practical AI integration using AWS managed services
+---
 
-System-level thinking beyond simple AI chat interfaces
+## 📌 Author Notes
 
-Conscious trade-offs suitable for an MVP
-
-A clear path toward enterprise-grade expansion
-
-📌 Author Notes
-
-This document exists to explain architectural intent and decision-making, especially in interview and portfolio review contexts.
+This document exists to explain architectural intent and decision-making and is intended for interview and portfolio review purposes.

@@ -1,6 +1,6 @@
 # 🗓️ Daily Task Scheduler (AI-Powered)
 
-An AI-powered daily task scheduling application built using **AWS PartyRock** and **Amazon Bedrock**.  
+An AI-powered daily task scheduling application built using **AWS PartyRock (powered by Amazon Bedrock)**.  
 The app transforms an unstructured list of tasks into a **realistic, time-blocked daily schedule**, while also providing **productivity tips** and **overload warnings**.
 
 🔗 **Live Demo**:  

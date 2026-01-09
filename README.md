@@ -56,14 +56,14 @@ All scaling, security, and availability are managed by AWS.
 ## 📊 Sample Output
 
 ### User Input
-![User Input](screenshots/01-user-input.png)
+![User Input](Screenshots/01-user-input.png)
 
 ### Generated Daily Schedule
-![Generated Schedule](screenshots/02-generated-schedule.png)
-![Generated Schedule](screenshots/02-generated-schedule-2.png)
+![Generated Schedule](Screenshots/02-generated-schedule.png)
+![Generated Schedule](Screenshots/02-generated-schedule-2.png)
 
 ### Productivity Tips
-![Productivity Tips](screenshots/03-productivity-tips.png)
+![Productivity Tips](Screenshots/03-productivity-tips.png)
 
 
 ---

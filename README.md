@@ -49,7 +49,22 @@ All scaling, security, and availability are managed by AWS.
 
 ## 🖼️ Architecture Diagram
 
-![Architecture Diagram](architecture/architecture-diagram.png)
+![Architecture Diagram](Architecture/architecture-diagram.png)
+
+---
+
+## 📊 Sample Output
+
+### User Input
+![User Input](screenshots/01-user-input.png)
+
+### Generated Daily Schedule
+![Generated Schedule](screenshots/02-generated-schedule.png)
+![Generated Schedule](screenshots/02-generated-schedule-2.png)
+
+### Productivity Tips
+![Productivity Tips](screenshots/03-productivity-tips.png)
+
 
 ---
 

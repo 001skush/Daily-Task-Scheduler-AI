@@ -30,6 +30,8 @@ The application uses a **serverless, no-code architecture** powered by AWS manag
 
 All scaling, security, and availability are managed by AWS.
 
+“This architecture intentionally uses no-code and managed services to demonstrate how AI-powered applications can be rapidly prototyped and safely deployed without sacrificing scalability or security.”
+
 ---
 
 ## 🏗️ Architecture Flow
